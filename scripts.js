@@ -17,8 +17,8 @@ function RunRound(){
     document.getElementById("winner").style.display = "none";
     document.getElementById("PlayButton").innerHTML = "Next Round";
     document.getElementById("output").style.visibility = "visible";
-    document.getElementById("output").innerHTML = "<tr>" + "<th>" + "Round " + round + "</th>" + "</tr>";
-    document.getElementById("output").innerHTML = "<tr>" + "<th>" + "Player" + "</th>" + "<th>" + "Score" + "</th>" + "</tr>";
+    document.getElementById("output").innerHTML = "<tr class='table-light'>" + "<th>" + "Round " + round + "</th>" + "</tr>";
+    document.getElementById("output").innerHTML += "<tr class='table-primary'>" + "<th>" + "Player" + "</th>" + "<th>" + "Score" + "</th>" + "</tr>";
     switch(round)
     {
         case 1:
@@ -56,7 +56,7 @@ function EarlyGame(players)
     players.sort(function(a, b){return b.score - a.score});
     for(player in players)
     {
-        document.getElementById("output").innerHTML += "<tr class:bg-dark;>" + "<td>" + players[player].name + "</td>"  + "<td>" + players[player].score + "</td>"  +  "</tr>";
+        document.getElementById("output").innerHTML += "<tr class='table-secondary'>" + "<td>" + players[player].name + "</td>"  + "<td>" + players[player].score + "</td>"  +  "</tr>";
     }
     players.pop();
     players.pop();
@@ -76,7 +76,7 @@ function MidGame(players)
     players.sort(function(a, b){return b.score - a.score});
     for(player in players)
     {
-        document.getElementById("output").innerHTML += "<tr>" + "<td>" + players[player].name + "</td>"  + "<td>" + players[player].score + "</td>"  +  "</tr>";
+        document.getElementById("output").innerHTML += "<tr class='table-secondary'>" + "<td>" + players[player].name + "</td>"  + "<td>" + players[player].score + "</td>"  +  "</tr>";
     }
     players.pop();
     for(player in players)
@@ -88,7 +88,8 @@ function MidGame(players)
 
 function FinalShootout(players)
 {
-    document.getElementById("output").innerHTML = "<tr>" + "<th>" + "Player" + "</th>" + "<th>" + "Rolls" + "</th>" + "</tr>";
+    document.getElementById("output").innerHTML = "<tr>" + "<th>" + "Final Shootout" + "</th>" + "</tr>";
+    document.getElementById("output").innerHTML += "<tr class='table-primary'>" + "<th>" + "Player" + "</th>" + "<th>" + "Rolls" + "</th>" + "</tr>";
     players[0].score = FinalDice(players[0]);
     players[1].score = FinalDice(players[1]);
     document.getElementById("winner").style.display = "inline";
@@ -132,7 +133,7 @@ function FinalDice(player)
             rollsString += rolls[x] + " ";
         }
     }
-    document.getElementById("output").innerHTML += "<tr>" + "<td>" + player.name + "</td>" + "<td>" + rollsString + "</td>" + "</tr>";
+    document.getElementById("output").innerHTML += "<tr class='table-secondary'>" + "<td>" + player.name + "</td>" + "<td>" + rollsString + "</td>" + "</tr>";
     return rolls[choice];
 }
 
