@@ -98,9 +98,11 @@ function FinalShootout(players)
         document.getElementById("winner").innerHTML = "<strong>" + players[0].name + " Wins!" + "<strong>";
         return players[0].name;
     }
-    else{
+    else if (players[1].score > players[0].score) {
         document.getElementById("winner").innerHTML =  "<strong>" + players[1].name + " Wins!" + "<strong>";
         return players[1].name;
+    } else {
+        FinalShootout(players);
     }
 }
 
